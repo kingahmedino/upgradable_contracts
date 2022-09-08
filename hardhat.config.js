@@ -1,4 +1,5 @@
 require("@nomiclabs/hardhat-ethers");
+require("@nomiclabs/hardhat-etherscan");
 const fs = require("fs");
 const privateKey = fs.readFileSync(".secret").toString();
 
@@ -22,8 +23,16 @@ module.exports = {
   solidity: "0.8.15",
   networks: {
     rinkeby: {
-      url: "https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+      url: `https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161`,
       accounts: [privateKey],
+    },
+    goerli: {
+      url: `https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161`,
+      accounts: [privateKey],
+    },
+    etherscan: {
+      url: `https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161`,
+      apiKey: process.env.ETHERSCAN_API_KEY,
     },
   },
 };
